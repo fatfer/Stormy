@@ -40,19 +40,30 @@ public class MainActivity extends ActionBarActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
+
                 Log.e(TAG, "Error", e);
             }
 
             @Override
             public void onResponse(Response response) throws IOException {
-                if (!response.isSuccessful()) {
-                    throw new IOException("Unexpected code " + response);
+                try{
+                    Log.v(TAG, response.body().string());
+                    if(response.isSuccessful()){
+
+                    }
+                    else{
+                        alertUserAboutError();
+                    }
+                } catch (IOException e){
+                    Log.e(TAG, "Exception: ", e);
                 }
-                System.out.println(response.body().string());
             }
         });
+    }
 
-
+    private void alertUserAboutError() {
+        AlertDialogFragment dialog = new AlertDialogFragment();
+        dialog.show(getFragmentManager(), "error_dialog");
     }
 
 
