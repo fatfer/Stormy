@@ -93,6 +93,9 @@ public class MainActivity extends ActionBarActivity {
         currentWeather.setIcon(currently.getString("icon"));
         currentWeather.setPrecipChance(currently.getDouble("precipProbability"));
         currentWeather.setSummary(currently.getString("summary"));
+        currentWeather.setTimeZone(timeZone);
+
+        Log.d(TAG, currentWeather.getFormattedTime());
 
         return new CurrentWeather();
     }
