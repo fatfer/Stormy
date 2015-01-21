@@ -72,10 +72,15 @@ public class MainActivity extends ActionBarActivity {
                 public void onResponse(Response response) throws IOException {
                     try {
                         String jsonData = response.body().string();
-                        Log.v(TAG, response.body().string());
+                        Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
                             mCurrentWeather = getCurrentDetails(jsonData);
-
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateDisplay();
+                                }
+                            });
                         } else {
                             alertUserAboutError();
                         }
@@ -92,6 +97,11 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, getString(R.string.network_unavailable_message),
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void updateDisplay() {
+        mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
+
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException{
