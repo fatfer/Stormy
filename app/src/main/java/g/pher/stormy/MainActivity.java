@@ -101,7 +101,10 @@ public class MainActivity extends ActionBarActivity {
 
     private void updateDisplay() {
         mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
-
+        mTimeLabel.setText(mCurrentWeather.getFormattedTime() + "it will be");
+        mHumidityValue.setText(mCurrentWeather.getHumidity() + "");
+        mPrecipValue.setText(mCurrentWeather.getPrecipChance() + "%");
+        mSummaryLabel.setText(mCurrentWeather.getSummary());
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException{

@@ -77,8 +77,9 @@ public class CurrentWeather {
         return mPrecipChance;
     }
 
-    public void setPrecipChance(double precipChance) {
-        mPrecipChance = precipChance;
+    public int setPrecipChance(double precipChance) {
+        double precipPercentage = mPrecipChance * 100;
+        return (int)Math.round(precipPercentage);
     }
 
     public double getHumidity() {
