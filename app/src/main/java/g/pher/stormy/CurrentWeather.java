@@ -73,11 +73,11 @@ public class CurrentWeather {
         mSummary = summary;
     }
 
-    public double getPrecipChance() {
-        return mPrecipChance;
+    public void setPrecipChance(double precipChance) {
+        mPrecipChance = precipChance;
     }
 
-    public int setPrecipChance(double precipChance) {
+    public int getPrecipChance() {
         double precipPercentage = mPrecipChance * 100;
         return (int)Math.round(precipPercentage);
     }

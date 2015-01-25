@@ -154,7 +154,6 @@ public class MainActivity extends ActionBarActivity {
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException{
         JSONObject forecast = new JSONObject(jsonData);
         String timeZone = forecast.getString("timezone");
-        Log.i(TAG, "From JSON: " + timeZone);
 
         JSONObject currently = forecast.getJSONObject("currently");
         CurrentWeather currentWeather = new CurrentWeather();
